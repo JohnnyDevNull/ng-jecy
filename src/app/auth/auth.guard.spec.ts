@@ -22,21 +22,19 @@ describe('AuthGuard', () => {
   });
 
   test('canActivate should return UrlTree', done => {
-    guard.canActivate(null as any, null as any).subscribe(
-      v => {
-        expect(v).toBeInstanceOf(UrlTree);
-        done();
-      }
-    );
+    expect.assertions(1);
+    guard.canActivate(null as any, null as any).subscribe(v => {
+      expect(v).toBeInstanceOf(UrlTree);
+      done();
+    });
   });
 
   test('canActivate should return true', done => {
+    expect.assertions(1);
     authService.setIsLoggedIn(true);
-    guard.canActivate(null as any, null as any).subscribe(
-      v => {
-        expect(v).toBeTruthy();
-        done();
-      }
-    );
+    guard.canActivate(null as any, null as any).subscribe(v => {
+      expect(v).toBeTruthy();
+      done();
+    });
   });
 });
